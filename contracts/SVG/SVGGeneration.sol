@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "@condao/contracts/SVG/SVGUtils.sol";
+import "@condodao/contracts/SVG/SVGUtils.sol";
 
 library SVGGeneration {
     function generateSVG(

@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {NFT} from "@condao/contracts/NFT.sol";
-import {CondoTimelock} from "@condao/contracts/CondoTimelock.sol";
-import {CondoGovernor} from "@condao/contracts/CondoGovernor.sol";
-import {CondoVault} from "@condao/contracts/CondoVault.sol";
+import {NFT} from "@condodao/contracts/NFT.sol";
+import {CondoTimelock} from "@condodao/contracts/CondoTimelock.sol";
+import {CondoGovernor} from "@condodao/contracts/CondoGovernor.sol";
+import {CondoVault} from "@condodao/contracts/CondoVault.sol";
 
-import {CondoEnums} from "@condao/contracts/DAO/CondoEnums.sol";
-import {CondoEvents} from "@condao/contracts/DAO/CondoEvents.sol";
-import {CondoStructs} from "@condao/contracts/DAO/CondoStructs.sol";
-import {CondoErrors} from "@condao/contracts/DAO/CondoErrors.sol";
+import {CondoEnums} from "@condodao/contracts/DAO/CondoEnums.sol";
+import {CondoEvents} from "@condodao/contracts/DAO/CondoEvents.sol";
+import {CondoStructs} from "@condodao/contracts/DAO/CondoStructs.sol";
+import {CondoErrors} from "@condodao/contracts/DAO/CondoErrors.sol";
 
 contract CondoManager is CondoEvents, CondoStructs, CondoErrors {
     uint256 public nextCondoId;

@@ -3,10 +3,10 @@ pragma solidity ^0.8.20;
 
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
-import "@condao/contracts/NFT.sol";
-import "@condao/contracts/CondoTimelock.sol";
-import "@condao/contracts/CondoGovernor.sol";
-import "@condao/contracts/CondoVault.sol";
+import "@condodao/contracts/NFT.sol";
+import "@condodao/contracts/CondoTimelock.sol";
+import "@condodao/contracts/CondoGovernor.sol";
+import "@condodao/contracts/CondoVault.sol";
 
 contract DAOTest is Test {
     NFT nft;

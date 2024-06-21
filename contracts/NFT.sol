@@ -7,7 +7,7 @@ import {ERC721Enumerable} from "@openzeppelin/contracts/token/ERC721/extensions/
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {EIP712} from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 import {ERC721Votes} from "@openzeppelin/contracts/token/ERC721/extensions/ERC721Votes.sol";
-import {NFTGeneration} from "@condao/contracts/NFT/NFTGeneration.sol";
+import {NFTGeneration} from "@condodao/contracts/NFT/NFTGeneration.sol";
 
 contract NFT is ERC721, ERC721Enumerable, Ownable, EIP712, ERC721Votes {
     uint256[][] public apartments;

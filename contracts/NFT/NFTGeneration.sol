@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {SVGGeneration} from "@condao/contracts/SVG/SVGGeneration.sol";
-import {NFTUtils} from "@condao/contracts/NFT/NFTUtils.sol";
+import {SVGGeneration} from "@condodao/contracts/SVG/SVGGeneration.sol";
+import {NFTUtils} from "@condodao/contracts/NFT/NFTUtils.sol";
 
 library NFTGeneration {
     using SVGGeneration for uint256[][];

@@ -2,15 +2,15 @@
 pragma solidity ^0.8.20;
 
 import "forge-std/Test.sol";
-import "@condao/contracts/DAO/CondoManager.sol";
-import "@condao/contracts/NFT.sol";
-import "@condao/contracts/CondoTimelock.sol";
-import "@condao/contracts/CondoGovernor.sol";
-import "@condao/contracts/CondoVault.sol";
-import "@condao/contracts/DAO/CondoEnums.sol";
-import "@condao/contracts/DAO/CondoStructs.sol";
-import "@condao/contracts/DAO/CondoEvents.sol";
-import "@condao/contracts/DAO/CondoErrors.sol";
+import "@condodao/contracts/DAO/CondoManager.sol";
+import "@condodao/contracts/NFT.sol";
+import "@condodao/contracts/CondoTimelock.sol";
+import "@condodao/contracts/CondoGovernor.sol";
+import "@condodao/contracts/CondoVault.sol";
+import "@condodao/contracts/DAO/CondoEnums.sol";
+import "@condodao/contracts/DAO/CondoStructs.sol";
+import "@condodao/contracts/DAO/CondoEvents.sol";
+import "@condodao/contracts/DAO/CondoErrors.sol";
 
 contract CondoManagerTest is Test, CondoEnums, CondoEvents, CondoErrors {
     CondoManager condoManager;

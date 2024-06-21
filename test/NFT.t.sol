@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import "forge-std/Test.sol";
-import "@condao/contracts/NFT.sol";
+import "@condodao/contracts/NFT.sol";
 
 contract NFTTest is Test {
     NFT nft;

@@ -1,0 +1,21 @@
+{
+  "name": "@condodao/v1-core",
+  "description": "🗄️ Core smart contracts of Condo V1",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.0.0",
+  "homepage": "https://github.com/condodao",
+  "keywords": [
+    "condo",
+    "dao",
+    "condodao",
+    "core",
+    "v1"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/condodao/v1-core.git"
+  }
+}

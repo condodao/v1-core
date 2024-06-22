@@ -14,7 +14,7 @@ contract NewCondoNFT {
         address metadata
     );
 
-    // constructor() {}
+    constructor() {}
 
     function createNft(
         address condoManager,

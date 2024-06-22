@@ -20,12 +20,12 @@ forge script script/DeployVaultToScroll.s.sol \
     --optimize \
     --optimizer-runs 200
 
-forge verify-contract 0x7D6DBc274728F733078c7abDAC0A3acbB0d8c02c NewCondoVault \
+forge verify-contract 0xFD7fC6fEF2c2f811bd7BedA641607E5CB9CB53fB NewCondoVault \
     --verifier-url $VERIFIER_URL \
     --etherscan-api-key $ETHERSCAN_API_KEY \
     --constructor-args ""
     
-NewCondoVault: 0x7D6DBc274728F733078c7abDAC0A3acbB0d8c02c
+NewCondoVault: 0xFD7fC6fEF2c2f811bd7BedA641607E5CB9CB53fB
 */
 contract DeployToScrollScript is Script {
     function run() external {

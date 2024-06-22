@@ -20,12 +20,12 @@ forge script script/DeployTimeToScroll.s.sol \
     --optimize \
     --optimizer-runs 200
 
-forge verify-contract 0xC74620d5e2F26673012dBAC2e57f269397F0429E NewCondoTimelock \
+forge verify-contract 0xe50eB1643C677C7efB944dd266f6431204613a53 NewCondoTimelock \
     --verifier-url $VERIFIER_URL \
     --etherscan-api-key $ETHERSCAN_API_KEY \
     --constructor-args ""
     
-NewCondoTimelock: 0xC74620d5e2F26673012dBAC2e57f269397F0429E
+NewCondoTimelock: 0xe50eB1643C677C7efB944dd266f6431204613a53
 */
 contract DeployToScrollScript is Script {
     function run() external {

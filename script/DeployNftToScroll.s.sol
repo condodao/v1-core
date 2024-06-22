@@ -20,12 +20,12 @@ forge script script/DeployNftToScroll.s.sol \
     --optimize \
     --optimizer-runs 200
 
-forge verify-contract 0x4a356cDa82b1cEb879F49165779efD37606B51C3 NewCondoNFT \
+forge verify-contract 0x0AA821d84076770E027B317226eC50Fe062dDe30 NewCondoNFT \
     --verifier-url $VERIFIER_URL \
     --etherscan-api-key $ETHERSCAN_API_KEY \
     --constructor-args ""
     
-NewCondoNFT: 0x4a356cDa82b1cEb879F49165779efD37606B51C3
+NewCondoNFT: 0x0AA821d84076770E027B317226eC50Fe062dDe30
 */
 contract DeployToScrollScript is Script {
     function run() external {

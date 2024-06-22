@@ -20,12 +20,12 @@ forge script script/DeployToScroll.s.sol \
     --optimize \
     --optimizer-runs 200
 
-forge verify-contract 0x16fB02E94f738Cf9659550Eb2059F55B26238315 CondoManager \
+forge verify-contract 0xd56430B5b358D2de6AAAa752f2975c4BB2E5f4Cc CondoManager \
     --verifier-url $VERIFIER_URL \
     --etherscan-api-key $ETHERSCAN_API_KEY \
     --constructor-args ""
     
-CondoManager: 0x16fB02E94f738Cf9659550Eb2059F55B26238315
+CondoManager: 0xd56430B5b358D2de6AAAa752f2975c4BB2E5f4Cc
 */
 contract DeployToScrollScript is Script {
     function run() external {

@@ -6,7 +6,7 @@ import {CondoVault} from "@condodao/v1-core/contracts/dao/CondoVault.sol";
 contract NewCondoVault {
     event NewVault(address indexed condoTimelock, address indexed vault);
 
-    // constructor() {}
+    constructor() {}
 
     function createVault(address condoTimelock) public returns (address) {
         CondoVault vault = new CondoVault(condoTimelock);

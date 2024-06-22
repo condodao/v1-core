@@ -12,7 +12,7 @@ contract NewCondoGovernor {
         address indexed governor
     );
 
-    // constructor() {}
+    constructor() {}
 
     function createGovernor(
         address condoNft,

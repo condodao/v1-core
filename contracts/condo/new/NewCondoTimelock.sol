@@ -12,7 +12,7 @@ contract NewCondoTimelock {
         address indexed admin
     );
 
-    // constructor() {}
+    constructor() {}
 
     function createTimelock() public returns (address) {
         address admin = msg.sender;

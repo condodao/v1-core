@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-library NFTUtils {
+library Utils {
     function getTraitsAsJson(
         uint256 floor,
         uint256 apartment

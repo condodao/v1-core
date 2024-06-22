@@ -1,20 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "@condodao/contracts/SVG/SVGUtils.sol";
+import "@condodao/v1-core/contracts/metadata/svg/SVGUtils.sol";
 
 library SVGGeneration {
     function generateSVG(
-        uint256[] memory apartments,
+        uint256[][] memory apartments,
         string memory name,
         uint256 floor,
         uint256 apartment
     ) internal pure returns (string memory) {
         uint256 maxApartmentsPerFloor = getMaxApartmentsPerFloor(apartments);
+        uint256 totalFloors = getMaxFloors(apartments);
         uint256 rectWidth = (600 - (maxApartmentsPerFloor - 1) * 2) /
             maxApartmentsPerFloor;
-        uint256 rectHeight = (600 - (apartments.length - 1) * 2) /
-            apartments.length;
+        uint256 rectHeight = (600 - (totalFloors - 1) * 2) / totalFloors;
 
         string memory gradient = generateGradient(floor, apartment);
         string memory svgStart = string(
@@ -46,7 +46,7 @@ library SVGGeneration {
     }
 
     function generateGrid(
-        uint256[] memory apartments,
+        uint256[][] memory apartments,
         uint256 floor,
         uint256 apartment,
         uint256 rectWidth,
@@ -54,7 +54,7 @@ library SVGGeneration {
         uint256 spacing
     ) internal pure returns (string memory) {
         string memory grid = "";
-        uint256 totalFloors = apartments.length;
+        uint256 totalFloors = getMaxFloors(apartments);
 
         for (uint256 y = 0; y < totalFloors; y++) {
             grid = string(
@@ -62,7 +62,7 @@ library SVGGeneration {
                     grid,
                     generateFloor(
                         apartments,
-                        y,
+                        y + 1,
                         floor,
                         apartment,
                         rectWidth,
@@ -78,8 +78,8 @@ library SVGGeneration {
     }
 
     function generateFloor(
-        uint256[] memory apartments,
-        uint256 y,
+        uint256[][] memory apartments,
+        uint256 currentFloor,
         uint256 floor,
         uint256 apartment,
         uint256 rectWidth,
@@ -88,15 +88,19 @@ library SVGGeneration {
         uint256 totalFloors
     ) internal pure returns (string memory) {
         string memory floorGrid = "";
-        uint256 apartmentsOnFloor = apartments[totalFloors - 1 - y];
+        uint256 apartmentsOnFloor = getApartmentsOnFloor(
+            apartments,
+            currentFloor
+        );
 
         for (uint256 x = 0; x < apartmentsOnFloor; x++) {
             floorGrid = string(
                 abi.encodePacked(
                     floorGrid,
                     generateRect(
-                        x,
-                        totalFloors - 1 - y,
+                        apartments,
+                        currentFloor,
+                        x + 1,
                         floor,
                         apartment,
                         rectWidth,
@@ -112,8 +116,9 @@ library SVGGeneration {
     }
 
     function generateRect(
-        uint256 x,
-        uint256 y,
+        uint256[][] memory,
+        uint256 currentFloor,
+        uint256 currentApartment,
         uint256 floor,
         uint256 apartment,
         uint256 rectWidth,
@@ -121,10 +126,10 @@ library SVGGeneration {
         uint256 spacing,
         uint256 totalFloors
     ) internal pure returns (string memory) {
-        uint256 xOffset = x * (rectWidth + spacing);
-        uint256 yOffset = (totalFloors - 1 - y) * (rectHeight + spacing);
+        uint256 xOffset = (currentApartment - 1) * (rectWidth + spacing);
+        uint256 yOffset = (totalFloors - currentFloor) * (rectHeight + spacing);
 
-        if (y == floor - 1 && x == apartment - 1) {
+        if (currentFloor == floor && currentApartment == apartment) {
             return
                 generateCyanRect(
                     xOffset,
@@ -200,7 +205,7 @@ library SVGGeneration {
                     SVGUtils.uint2str(rectWidth),
                     '" height="',
                     SVGUtils.uint2str(rectHeight),
-                    '" rx="5" ry="5" fill="black"/>'
+                    '" rx="5" ry="5" fill="gray"/>'
                 )
             );
     }
@@ -235,14 +240,39 @@ library SVGGeneration {
     }
 
     function getMaxApartmentsPerFloor(
-        uint256[] memory apartments
+        uint256[][] memory apartments
     ) internal pure returns (uint256) {
         uint256 max = 0;
         for (uint256 i = 0; i < apartments.length; i++) {
-            if (apartments[i] > max) {
-                max = apartments[i];
+            if (apartments[i][1] > max) {
+                max = apartments[i][1];
             }
         }
         return max;
+    }
+
+    function getMaxFloors(
+        uint256[][] memory apartments
+    ) internal pure returns (uint256) {
+        uint256 max = 0;
+        for (uint256 i = 0; i < apartments.length; i++) {
+            if (apartments[i][0] > max) {
+                max = apartments[i][0];
+            }
+        }
+        return max;
+    }
+
+    function getApartmentsOnFloor(
+        uint256[][] memory apartments,
+        uint256 floor
+    ) internal pure returns (uint256) {
+        uint256 count = 0;
+        for (uint256 i = 0; i < apartments.length; i++) {
+            if (apartments[i][0] == floor) {
+                count++;
+            }
+        }
+        return count;
     }
 }

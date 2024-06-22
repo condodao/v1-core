@@ -1,13 +1,25 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {SVGGeneration} from "@condodao/contracts/SVG/SVGGeneration.sol";
-import {NFTUtils} from "@condodao/contracts/NFT/NFTUtils.sol";
+import {SVGGeneration} from "@condodao/v1-core/contracts/metadata/svg/SVGGeneration.sol";
+import {Utils} from "@condodao/v1-core/contracts/metadata/Utils.sol";
 
-library NFTGeneration {
+interface IMetadata {
+    function tokenURI(
+        uint256 tokenId,
+        string memory name,
+        uint256 floor,
+        uint256 apartment,
+        uint256[][] memory apartments
+    ) external pure returns (string memory);
+}
+
+contract Metadata is IMetadata {
     using SVGGeneration for uint256[][];
 
-    function generateNFT(
+    constructor() {}
+
+    function tokenURI(
         uint256 tokenId,
         string memory name,
         uint256 floor,
@@ -18,17 +30,17 @@ library NFTGeneration {
 
         string memory image = string.concat(
             '"image":"data:image/svg+xml;base64,',
-            NFTUtils.encode(bytes(svg)),
+            Utils.encode(bytes(svg)),
             '"'
         );
 
         string memory json = string.concat(
             '{"name":"Real estate contract #',
-            NFTUtils.toString(tokenId),
+            Utils.toString(tokenId),
             unicode'","description":"Real estate contract «',
             name,
             unicode'»",',
-            NFTUtils.getTraitsAsJson(floor, apartment),
+            Utils.getTraitsAsJson(floor, apartment),
             ",",
             image,
             "}"
@@ -37,7 +49,7 @@ library NFTGeneration {
         return
             string.concat(
                 "data:application/json;base64,",
-                NFTUtils.encode(bytes(json))
+                Utils.encode(bytes(json))
             );
     }
 }

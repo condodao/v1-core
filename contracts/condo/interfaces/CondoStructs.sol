@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {CondoEnums} from "@condodao/contracts/DAO/CondoEnums.sol";
+import {CondoEnums} from "@condodao/v1-core/contracts/condo/interfaces/CondoEnums.sol";
 
 interface CondoStructs is CondoEnums {
     struct Condo {
@@ -10,7 +10,6 @@ interface CondoStructs is CondoEnums {
         address timelock; // Timelock for the condominium's DAO
         address governor; // Governor contract for the condominium's DAO
         address vault; // Vault for accumulating sales from apartments
-        uint256[][] apartments; // [[floor number, apartment number, apartment price]]
         Status status; // Current status of the condo
         uint256 createdAt; // Block number when created
         uint256 updatedAt; // Block number when last updated

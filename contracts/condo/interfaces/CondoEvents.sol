@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {CondoEnums} from "@condodao/contracts/DAO/CondoEnums.sol";
+import {CondoEnums} from "@condodao/v1-core/contracts/condo/interfaces/CondoEnums.sol";
 
 interface CondoEvents is CondoEnums {
     event CondoAdded(
@@ -10,10 +10,7 @@ interface CondoEvents is CondoEnums {
         address indexed tokenAddress,
         address timelock,
         address governor,
-        address vault,
-        uint256 apartmentCount,
-        string name,
-        string symbol
+        address vault
     );
 
     event CondoUpdated(uint256 indexed condoId, Status indexed status);

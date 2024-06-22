@@ -3,13 +3,15 @@ pragma solidity ^0.8.20;
 
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
-import "@condodao/contracts/NFT.sol";
-import "@condodao/contracts/CondoTimelock.sol";
-import "@condodao/contracts/CondoGovernor.sol";
-import "@condodao/contracts/CondoVault.sol";
+import {Metadata} from "@condodao/v1-core/contracts/metadata/Metadata.sol";
+import {CondoNFT} from "@condodao/v1-core/contracts/nft/CondoNFT.sol";
+import {CondoTimelock} from "@condodao/v1-core/contracts/dao/CondoTimelock.sol";
+import {CondoGovernor} from "@condodao/v1-core/contracts/dao/CondoGovernor.sol";
+import {CondoVault} from "@condodao/v1-core/contracts/dao/CondoVault.sol";
 
 contract DAOTest is Test {
-    NFT nft;
+    Metadata metadata;
+    CondoNFT nft;
     CondoTimelock timelock;
     CondoGovernor governor;
     CondoVault vault;
@@ -22,23 +24,41 @@ contract DAOTest is Test {
         vm.startPrank(deployer);
 
         // Deploy the NFT contract
-        uint256[][] memory apartments = new uint256[][](2);
+        uint256[][] memory apartments = new uint256[][](5);
 
         apartments[0] = new uint256[](3);
-        apartments[0][0] = 1; // 1 floor
-        apartments[0][1] = 1; // 1 apartment
-        apartments[0][2] = 10; // 10 eth price
-
+        apartments[0][0] = 1; // floor number
+        apartments[0][1] = 1; // apart number
+        apartments[0][2] = 1000; // apart price
         apartments[1] = new uint256[](3);
-        apartments[1][0] = 2; // 1 floor
-        apartments[1][1] = 1; // 1 apartment
-        apartments[1][2] = 20; // 10 eth price
+        apartments[1][0] = 1; // floor number
+        apartments[1][1] = 2; // apart number
+        apartments[1][2] = 1500; // apart price
+        apartments[2] = new uint256[](3);
+        apartments[2][0] = 2; // floor number
+        apartments[2][1] = 1; // apart number
+        apartments[2][2] = 1500; // apart price
+        apartments[3] = new uint256[](3);
+        apartments[3][0] = 3; // floor number
+        apartments[3][1] = 1; // apart number
+        apartments[3][2] = 3500; // apart price
+        apartments[4] = new uint256[](3);
+        apartments[4][0] = 3; // floor number
+        apartments[4][1] = 2; // apart number
+        apartments[4][2] = 2500; // apart price
 
-        nft = new NFT("Test", "TST", apartments);
+        metadata = new Metadata();
+        nft = new CondoNFT(
+            address(deployer),
+            "Test",
+            "TST",
+            address(metadata),
+            apartments
+        );
 
         // Mint NFTs to users
-        nft.mint(user1, 1, 1); // Mint apartment 1 on floor 1
-        nft.mint(user2, 2, 1); // Mint apartment 1 on floor 2
+        nft.mintByIndex(user1, 2); // Mint apartment 2 on floor 1
+        nft.mintByApartment(user2, 3, 2); // Mint apartment 2 on floor 3
 
         // Deploy the Timelock contract
         uint256 minDelay = 2 days; // 2 days

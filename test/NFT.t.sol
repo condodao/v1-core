@@ -11,7 +11,7 @@ contract NFTTest is Test {
 
     function setUp() public {
         // Deploy the NFT contract
-        uint256[][] memory apartments = new uint256[][](5);
+        uint256[][] memory apartments = new uint256[][](6);
 
         apartments[0] = new uint256[](3);
         apartments[0][0] = 1; // floor number
@@ -26,13 +26,17 @@ contract NFTTest is Test {
         apartments[2][1] = 1; // apart number
         apartments[2][2] = 1500; // apart price
         apartments[3] = new uint256[](3);
-        apartments[3][0] = 3; // floor number
-        apartments[3][1] = 1; // apart number
-        apartments[3][2] = 3500; // apart price
+        apartments[3][0] = 2; // floor number
+        apartments[3][1] = 2; // apart number
+        apartments[3][2] = 1500; // apart price
         apartments[4] = new uint256[](3);
         apartments[4][0] = 3; // floor number
-        apartments[4][1] = 2; // apart number
-        apartments[4][2] = 2500; // apart price
+        apartments[4][1] = 1; // apart number
+        apartments[4][2] = 3500; // apart price
+        apartments[5] = new uint256[](3);
+        apartments[5][0] = 3; // floor number
+        apartments[5][1] = 2; // apart number
+        apartments[5][2] = 2500; // apart price
 
         metadata = new Metadata();
         nft = new CondoNFT(

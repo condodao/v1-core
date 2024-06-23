@@ -61,14 +61,14 @@ library SVGUtils {
                     uint2str(xOffset + rectWidth / 2),
                     '" y="',
                     uint2str(yOffset + rectHeight / 2 - 2),
-                    '" font-family="Arial" font-size="6" fill="black" text-anchor="middle" dominant-baseline="middle">Floor: ',
+                    '" font-family="Arial" font-size="10" fill="black" text-anchor="middle" dominant-baseline="middle">Floor: ',
                     uint2str(floor),
                     "</text>",
                     '<text x="',
                     uint2str(xOffset + rectWidth / 2),
                     '" y="',
-                    uint2str(yOffset + rectHeight / 2 + 2),
-                    '" font-family="Arial" font-size="6" fill="black" text-anchor="middle" dominant-baseline="middle">Apartment: ',
+                    uint2str(yOffset + rectHeight / 2 + 10),
+                    '" font-family="Arial" font-size="10" fill="black" text-anchor="middle" dominant-baseline="middle">Apartment: ',
                     uint2str(apartment),
                     "</text>"
                 )

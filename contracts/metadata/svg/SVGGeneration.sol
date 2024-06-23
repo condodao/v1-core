@@ -154,7 +154,7 @@ library SVGGeneration {
     ) internal pure returns (string memory) {
         string memory link = string(
             abi.encodePacked(
-                "http://localhost:3000/cond?floor=",
+                "http://localhost:3000/condo?floor=",
                 SVGUtils.uint2str(floor),
                 "&amp;appartment=",
                 SVGUtils.uint2str(apartment)
@@ -205,7 +205,7 @@ library SVGGeneration {
                     SVGUtils.uint2str(rectWidth),
                     '" height="',
                     SVGUtils.uint2str(rectHeight),
-                    '" rx="5" ry="5" fill="gray"/>'
+                    '" rx="5" ry="5" fill="black"/>'
                 )
             );
     }
